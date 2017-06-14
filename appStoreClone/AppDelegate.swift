@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup init viewController
         let layout = UICollectionViewFlowLayout()
-        let categoriesController = CategoriesController(collectionViewLayout: layout)
+        let featuredAppsController = FeaturedAppsController(collectionViewLayout: layout)
         
-        window?.rootViewController = UINavigationController(rootViewController: categoriesController)
+        window?.rootViewController = UINavigationController(rootViewController: featuredAppsController)
         
         return true
     }

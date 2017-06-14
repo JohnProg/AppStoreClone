@@ -10,11 +10,16 @@ import UIKit
 
 class CategoryCell : UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var featuredAppsController: FeaturedAppsController?
+    
+    private let appCellId = "appCellId"
     var appCategory: AppCategory? {
         didSet {
             if let name = appCategory?.name {
                 nameLabel.text = name
             }
+            
+            appsCollectionView.reloadData()
         }
     }
     
@@ -49,7 +54,7 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDataSource, UICollect
     
     let dividerLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.darkGray
+        view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -63,7 +68,7 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDataSource, UICollect
         
         appsCollectionView.dataSource = self
         appsCollectionView.delegate = self
-        appsCollectionView.register(appCell.self, forCellWithReuseIdentifier: "appCell")
+        appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: appCellId)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
         
@@ -82,7 +87,7 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "appCell", for: indexPath) as! appCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: appCellId, for: indexPath) as! AppCell
         cell.app = appCategory?.apps?[indexPath.item]
         return cell
     }
@@ -95,13 +100,33 @@ class CategoryCell : UICollectionViewCell, UICollectionViewDataSource, UICollect
         return UIEdgeInsetsMake(0, 14, 0, 14)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let app = appCategory?.apps?[indexPath.item] {
+            featuredAppsController?.showDetailForApp(app: app)
+        }
+    }
+    
 }
 
-class appCell : UICollectionViewCell {
+class AppCell : UICollectionViewCell {
     var app: App? {
         didSet {
             if let name = app?.name {
                 nameLabel.text = name
+                
+                let rect = NSString(string: name).boundingRect(with: CGSize(width: frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
+                
+                if rect.height > 20 {
+                    categoryLabel.frame = CGRect(x: 0, y: frame.width + 38, width: frame.width, height: 20)
+                    priceLabel.frame = CGRect(x: 0, y: frame.width + 56, width: frame.width, height: 20)
+                } else {
+                    categoryLabel.frame = CGRect(x: 0, y: frame.width + 22, width: frame.width, height: 20)
+                    priceLabel.frame = CGRect(x: 0, y: frame.width + 40, width: frame.width, height: 20)
+                }
+                
+                nameLabel.frame = CGRect(x: 0, y: frame.width + 5, width: frame.width, height: 40)
+                nameLabel.sizeToFit()
+                
             }
             categoryLabel.text = app?.category
             if let price = app?.price {

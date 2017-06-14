@@ -13,6 +13,7 @@
 		1B8F53BE1EEB6D9F00EDD469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B8F53BC1EEB6D9F00EDD469 /* LaunchScreen.storyboard */; };
 		1B8F53C61EEC46ED00EDD469 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8F53C51EEC46ED00EDD469 /* CategoryCell.swift */; };
 		1BB271C41EEDF61000071201 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB271C31EEDF61000071201 /* Models.swift */; };
+		1BFAC3261EF0FE9D00E7A0F5 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC3251EF0FE9D00E7A0F5 /* AppDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1B8F53BF1EEB6D9F00EDD469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B8F53C51EEC46ED00EDD469 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		1BB271C31EEDF61000071201 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1BFAC3251EF0FE9D00E7A0F5 /* AppDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				1B8F53BF1EEB6D9F00EDD469 /* Info.plist */,
 				1B8F53C51EEC46ED00EDD469 /* CategoryCell.swift */,
 				1BB271C31EEDF61000071201 /* Models.swift */,
+				1BFAC3251EF0FE9D00E7A0F5 /* AppDetailController.swift */,
 			);
 			path = appStoreClone;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				1B8F53B61EEB6D9F00EDD469 /* ViewController.swift in Sources */,
 				1B8F53B41EEB6D9F00EDD469 /* AppDelegate.swift in Sources */,
 				1B8F53C61EEC46ED00EDD469 /* CategoryCell.swift in Sources */,
+				1BFAC3261EF0FE9D00E7A0F5 /* AppDetailController.swift in Sources */,
 				1BB271C41EEDF61000071201 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
